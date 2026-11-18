@@ -1,0 +1,16 @@
+[package]
+name = "ee"
+version = "0.4.0"
+edition = "2021"
+rust-version = "1.88"
+
+[target.'cfg(windows)'.dependencies]
+crossterm = "0.28"
+unicode-width = "0.2"
+winapi = { version = "0.3", features = ["consoleapi", "processenv", "stringapiset", "winbase", "wincon", "winerror", "winreg", "winuser"] }
+
+[profile.release]
+opt-level = "s"
+lto = true
+codegen-units = 1
+strip = true

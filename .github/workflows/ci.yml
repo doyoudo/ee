@@ -1,0 +1,15 @@
+name: Windows CI
+
+on: [push, pull_request]
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: cargo +stable fmt --check
+      - run: cargo +stable test --locked
+      - run: cargo +stable build --release --locked
